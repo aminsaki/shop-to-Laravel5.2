@@ -45,9 +45,10 @@ Route::group(['midddleware'=>['Auth']],function() {
 
 ///header  page admin if pasword and username  true 
 Route::group(['middleware' => 'admin'] , function(){
-  Route::get('admin','AdminController@index');
-    ///ShowAbout
-  Route::get('commit','CommitController@index');
+   Route::get('admin','AdminController@index');
+    ///ShowAboutcatpost
+   Route::get('commit','CommitController@index');
+   Route::post('commit','CommitController@insert');
 });
 
 /// header  page uses  if  password youe true

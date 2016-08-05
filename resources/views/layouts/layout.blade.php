@@ -18,7 +18,7 @@
       <![endif]-->
 
   </head>
-  <body  class="{{ $bodys or 'default' }}">
+  <body  class="{{ $bodys or 'default' }}" dir="rtl">
     @yield('content')
 
     @yield('footer')

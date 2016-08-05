@@ -247,7 +247,7 @@ background-color: rgba(234, 170, 16, 0.7);
     color: white;
 }
 .admin.col-md-offset-9 {
-    margin-left: 76%;
+    /*margin-left: 76%;*/
 }
 .bg-nav{
     background: none repeat scroll 0% 0% #2E5F89;
