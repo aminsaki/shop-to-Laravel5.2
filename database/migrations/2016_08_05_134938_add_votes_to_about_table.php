@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddVotesToAboutTable extends Migration
+class AddVotesToAboutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class AddVotesToAboutTable extends Migration
      */
     public function up()
     {
-        Schema::table('about', function (Blueprint $table) {
+        Schema::table('abouts', function (Blueprint $table) {
             //
         });
     }

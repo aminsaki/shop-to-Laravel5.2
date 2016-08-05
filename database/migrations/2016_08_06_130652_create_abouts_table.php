@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAboutTable extends Migration
+class CreateAboutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateAboutTable extends Migration
      */
     public function up()
     {
-        Schema::create('about', function (Blueprint $table) {
+        Schema::create('abouts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('data');
             $table->integer('user_id')->unsigned();

@@ -1,13 +1,20 @@
 @extends('layouts.layout')
 @section('content')
 @include('admins.temp.nav_top')
-
-    <div class="container">
+   <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-14">
      @include('admins.temp.meun_right')
-    <div class="panel panel-p col-md-8 col-md-offset-1" style="margin-top: -600px;" >
+    <div class="panel panel-p col-md-8 col-xs-offset-1 ">
         <div class="panel panel-default">
 
-            <div class="panel-heading text-right">ارسال مطلب</div>
+            <div class="panel-heading text-right">ارسال مطلب</div><br>
+            @if(session()->has('status'))
+                <div class="alert alert-success text-center alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                    </button>{{session('status')}}
+                </div>
+            @endif
             <div class="panel-body">
                  {!! Form::open(['url'=>'commit'])!!}
 
@@ -39,6 +46,8 @@
             </div>
         </div>
 </div>
+        </div>
+        </div>
     </div>
   <script  src="{{ URL::asset('ckeditor/ckeditor.js') }}"></script>
 <script>
@@ -46,7 +55,8 @@
 
     CKEDITOR.replace( 'editor1', {
         uiColor:'#3FA3C5',
-        language: 'fa'
+        language: 'fa',
+
 
     });
 
