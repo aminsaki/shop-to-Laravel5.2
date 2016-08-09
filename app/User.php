@@ -12,6 +12,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
     protected $fillable = [
         'id','name', 'level','email', 'password',
     ];
@@ -27,5 +28,9 @@ class User extends Authenticatable
     public function  about()
     {
         return $this->hasMany('App/About');
+    }
+    public function upload()
+    {
+        return $this->hasMany('App/Uploads');
     }
 }

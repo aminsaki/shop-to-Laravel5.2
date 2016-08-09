@@ -33,24 +33,25 @@
     </div>
 </div><!--/.nev---->
     !-- Start Contact Form -->
-        <form role="form" id="contactForm" class="contact-form" data-toggle="validator" class="shake">
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <span class="showmessage"></span>
                             <h4 class="modal-title text-right" id="exampleModalLabel">ارسال پیام</h4>
                         </div>
+                        {{Form::open(['url'=>'/contact'])}}
                         <div class="modal-body">
-                            <form>
+
                                 <div class="form-group text-right">
                                     <label for="recipient-name " class="control-label text-right">:نام ونام خانوادگی </label>
-                                    <input type="text" class="form-control" id="recipient-name" placeholder="لطفا نام خود را کامل وارد کنید">
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="لطفا نام خود را کامل وارد کنید">
                                 </div>
                                 <div class="form-group text-right">
                                     <label for="recipient-name " class="control-label text-right"> :ایمیل</label>
-                                    <input type="text" class="form-control" id="recipient-name" placeholder="لطفا ایمیل خود را وارد کنید">
+                                    <input type="email" name="email" class="form-control" id="recipient-name" placeholder="لطفا ایمیل خود را وارد کنید">
                                 </div>
                                 <div class="form-group text-right">
                                     <label for="recipient-name " class="control-label text-right">شماره تماس</label>
@@ -58,27 +59,24 @@
                                 </div>
                                 <div class="form-group text-right">
                                     <label for="recipient-name " class="control-label text-right">:عنوان پیام</label>
-                                    <input type="text" class="form-control" id="recipient-name" placeholder="لطفا عنوان پیام خود را بنویسید">
+                                    <input type="text" class="form-control" name="title" id="recipient-name" placeholder="لطفا عنوان پیام خود را بنویسید">
                                 </div>
                                 <div class="form-group text-right">
                                     <label for="message-text" class="text-right control-label">:پیام</label>
-                                    <textarea class="form-control" id="message-text" placeholder="پیغام خود را اینجا بنویسید"></textarea>
+                                    <textarea class="form-control" name="commit" id="message-text" placeholder="پیغام خود را اینجا بنویسید"></textarea>
                                 </div>
-                            </form>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">بسته پنجر</button>
-                            <button type="button" class="btn btn-primary">ارسال پیام</button>
+                            <button type="submit" name="submit" id="submit" value="submit" class="btn btn-primary">ارسال پیام</button>
                         </div>
+                        </form>
                     </div>
+
                 </div>
             </div>
-        </form>
-        <!-- End Contact Form -->
-<!-- Large modal -->
 
-<!-- Large modal -->
-<!-- Large modal -->
 
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">

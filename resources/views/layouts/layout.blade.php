@@ -16,17 +16,15 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-
   </head>
   <body  class="{{ $bodys or 'default' }}" dir="rtl">
     @yield('content')
 
     @yield('footer')
-
     <script type="text/javascript" src="{{URL::asset('bootstrap/js/jquery.min.js')}}"></script>
-   <script type="text/javascript" src="{{URL::asset('bootstrap/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('bootstrap/js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assety/app.js')}}"></script>
-   <script type="text" src="{{URL::asset('ckeditor/ckeditor.js')}}"></script>
+
    </body>
   </html>
 

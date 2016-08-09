@@ -11,6 +11,7 @@ class About extends Model
      *
      * @var array
      */
+    protected $table = 'abouts';
     protected $fillable = [
         'data', 'user_id','title', 'commit',
     ];

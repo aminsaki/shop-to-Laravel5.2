@@ -23,6 +23,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('faq','HomeController@faq');
     Route::get('admin','AdminController@index');
     Route::get('user','UserController@index');
+    Route::post('contact','HomeController@insertcontent');
 
 
 });
@@ -49,6 +50,19 @@ Route::group(['middleware' => 'admin'] , function(){
     ///ShowAboutcatpost
    Route::get('commit','CommitController@index');
    Route::post('commit','CommitController@insert');
+   Route::get('deletecommit/{id}','CommitController@delete');
+    //Showcontents
+    Route::get('contact','ContactController@index');
+    Route::get('contact/{id}','ContactController@show');
+    Route::get('delcontact/{id}','ContactController@delete');
+    Route::post('send','ContactController@sendemail');
+    ///upload
+    Route::get('upload','UploadController@index');
+    Route::get('duploads/{id}','UploadController@delete');
+    Route::post('sendup','UploadController@insert');
+    Route::get('showimg','UploadController@showimg');
+
+
 });
 
 /// header  page uses  if  password youe true
@@ -69,7 +83,9 @@ Route::group(['middleware' => 'auth'] , function(){
      Route::get('login', 'AuthController@showLoginForm');
     endif; 
 
- }); 
+ });
+
+
 
 
 

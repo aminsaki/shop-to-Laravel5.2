@@ -11,19 +11,19 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner " role="listbox">
                 <div class="item active" >
-                    <img src="{{URL::asset('assety/img/1461651802.jpg')}}" class="col-md-12 imgslider" alt="...">
+                    <img src="{{$upload->img}}" class="col-md-12 imgslider" alt="...">
                     <div class="carousel-caption">
 
                     </div>
                 </div>
                 <div class="item">
-                    <img src="{{URL::asset('assety/img/1465135560.jpg')}}" class="col-lg-12 imgslider" alt="...">
+                    <img src="{{$upload->imgo}}" class="col-lg-12 imgslider" alt="...">
                     <div class="carousel-caption">
 
                     </div>
                 </div>
                 <div class="item">
-                    <img src="{{URL::asset('assety/img/1465454963.jpg')}}" class="col-lg-12 imgslider" alt="...">
+                    <img src="{{$upload->imgt}}" class="col-lg-12 imgslider" alt="...">
                     <div class="carousel-caption">
 
                     </div>

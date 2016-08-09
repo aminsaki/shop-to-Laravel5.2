@@ -3,9 +3,9 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title text-right">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">ارسال مطلب  <span
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span
                                 class="glyphicon glyphicon-folder-close">
-                            </span></a>
+                            </span> ارسال مطلب  </a>
                 </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in">
@@ -13,7 +13,7 @@
                     <table class="table">
                         <tr>
                             <td><span class="glyphicon glyphicon-pencil text-primary">
-                               </span><a href="{{url('/commit')}}">درباه ما</a>
+                               </span><a href="{{url('/commit')}}">ارسال مطلب ها</a>
                             </td>
                         </tr>
                         <tr>
@@ -25,14 +25,15 @@
                         <tr>
                             <td>
                                 <span class="glyphicon glyphicon-file text-info"></span><a
-                                        href="http://www.jquery2dotnet.com">Newsletters</a>
+                                        href="{{url('/upload')}}">اسلایدر</a>
                             </td>
                         </tr>
                         <tr>
                             <td>
                                 <span class="glyphicon glyphicon-comment text-success"></span><a
-                                        href="http://www.jquery2dotnet.com">Comments</a>
-                                <span class="badge">42</span>
+                                        href="{{url('contact')}}">پیام ها</a>
+
+                                <span class="badge">22</span>
                             </td>
                         </tr>
                     </table>

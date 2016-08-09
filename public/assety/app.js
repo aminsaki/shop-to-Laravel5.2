@@ -11,6 +11,5 @@ function Func(Shahrestanha) {
         }
     }
 }
-
-
+CKEDITOR.replace( 'editor1',{ uiColor:'#3FA3C5',language: 'fa',});
 

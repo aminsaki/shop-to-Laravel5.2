@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'accepted'             => 'The :attribute must be accepted.',
+    'accepted'             => 'The :attribute must be accThe img must be an imageepted.',
     'active_url'           => 'The :attribute is not a valid URL.',
     'after'                => 'The :attribute must be a date after :date.',
     'alpha'                => 'The :attribute may only contain letters.',
@@ -37,7 +37,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'The :attribute must be a valid email address.',
     'exists'               => 'The selected :attribute is invalid.',
-    'filled'               => 'The :attribute field is required.',
+    'filled'               => 'لطفاattribute پرکنی  ',
     'image'                => 'The :attribute must be an image.',
     'in'                   => 'The selected :attribute is invalid.',
     'in_array'             => 'The :attribute field does not exist in :other.',
@@ -55,7 +55,6 @@ return [
         'numeric' => 'The :attribute must be at least :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
         'string'  => 'The :attribute must be at least :min characters.',
-        'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
     'numeric'              => 'The :attribute must be a number.',

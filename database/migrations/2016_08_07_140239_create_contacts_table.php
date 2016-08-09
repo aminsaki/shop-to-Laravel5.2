@@ -18,9 +18,9 @@ class CreateContactsTable extends Migration
            $table->string('email');
            $table->date('data');
            $table->integer('tell');
-            $table->string('title');
-            $table->text('commit');
-
+           $table->string('title');
+           $table->text('commit');
+           $table->integer('flag')->default('0');
         });
     }
 
