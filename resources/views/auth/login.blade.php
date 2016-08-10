@@ -3,8 +3,7 @@
 <div class="container-fluid">
 @include('temp.header')
 <div class="container">
-
-    <div class="row" style="margin-top: 135px;" >
+  <div class="row" style="margin-top: 135px;" >
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">ورود</div>
@@ -14,7 +13,7 @@
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                            <div class="col-md-6 col-md-offset-3">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control" placeholder="لطفا ایمیل خود را وارد کنید" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -22,12 +21,12 @@
                                     </span>
                                 @endif
                             </div>
-                            <label for="email" class="col-md-1 col-md-offset-0 control-label"> ایمیل</label>
+
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                              <div class="col-md-6 col-md-offset-3">
-                                <input id="password" type="password" class="form-control" name="password">
+                                <input id="password" type="password" class="form-control" name="password" placeholder="لطفا رمز خود را وارد کنید">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -35,7 +34,7 @@
                                     </span>
                                 @endif
                             </div>
-                            <label for="password" class="col-md-2 ">رمز ورود</label>
+
                         </div>
 
                         <div class="form-group">

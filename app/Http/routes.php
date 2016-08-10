@@ -74,16 +74,23 @@ Route::group(['middleware' => 'auth'] , function(){
 ///header page users  or admins label  admin or users
  Route::get('clogin',function(){
 
-    if(Auth::user()->level==='admin'):
-        $title='صفحه مدیریت';
-        return view('admins.index',compact('title'));
-     elseif(Auth::user()->level==='user'):
-       return view('users.index');
-     else:
-     Route::get('login', 'AuthController@showLoginForm');
-    endif; 
+  if(Auth::user())
+  {
+      if (Auth::user()->level === 'admin') {
+          $title = 'صفحه مدیریت';
+          return view('admins.index', compact('title'));
+      } elseif (Auth::user()->level === 'user') {
+          return view('users.index');
+      }
+      else {
+         return view('auth.login');
+      }
+  }
+  else {
+      return view('auth.login');
 
- });
+  }
+  });
 
 
 
