@@ -1,8 +1,8 @@
 <?php
 
-//header page index 
 Route::get('/', 'HomeController@index');
-//header  page  website
+
+
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('about','HomeController@about');
@@ -18,27 +18,8 @@ Route::group(['middleware' => ['web']], function () {
 
 
 });
-///header page  validtion logins
-Route::group(['midddleware'=>['auth']],function() {
-    $this->get('login', 'AuthController@showLoginForm');
-    $this->post('login', 'AuthController@login');
-    $this->get('logout', 'AuthController@logout');
-    // Registration Routes...
-    $this->get('register', 'AuthController@showRegistrationForm');
-    $this->post('register', 'AuthController@register');
-    // Password Reset Routes...
-    $this->get('password/reset/{token?}', 'PasswordController@showResetForm');
-    $this->post('password/email', 'PasswordController@sendResetLinkEmail');
-    $this->post('password/reset', 'PasswordController@reset');
-    Route::auth();
-   ///users
-    Route::get('user','UserController@index');
-    Route::get('datashow','UserController@show');
-    Route::get('formpassword','UserController@passwords');
-    Route::post('savepassword','UserController@save');
 
-});
-///header page users  or admins label  admin or users
+
 Route::get('clogin',function(){
 
     if(Auth::user())
@@ -60,7 +41,26 @@ Route::get('clogin',function(){
     }
 });
 
-///header  page admin if pasword and username  true
+Route::group(['midddleware'=>['auth']],function() {
+    $this->get('login', 'AuthController@showLoginForm');
+    $this->post('login', 'AuthController@login');
+    $this->get('logout', 'AuthController@logout');
+    // Registration Routes...
+    $this->get('register', 'AuthController@showRegistrationForm');
+    $this->post('register', 'AuthController@register');
+    // Password Reset Routes...
+    $this->get('password/reset/{token?}', 'PasswordController@showResetForm');
+    $this->post('password/email', 'PasswordController@sendResetLinkEmail');
+    $this->post('password/reset', 'PasswordController@reset');
+    Route::auth();
+    ///users
+    Route::get('user','User\UserController@index');
+    Route::get('datashow','User\UserController@show');
+    Route::get('formpassword','User\UserController@passwords');
+    Route::post('savepassword','User\UserController@save');
+
+});
+
 Route::group(['middleware' => 'admin'] , function(){
    Route::get('admin','AdminController@index');
     ///ShowAboutcatpost
