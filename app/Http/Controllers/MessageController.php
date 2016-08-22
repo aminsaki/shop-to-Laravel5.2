@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class MessageController extends Controller
 {
@@ -35,11 +36,11 @@ class MessageController extends Controller
     }
     public function index($id)
     {
-        // commoditie_id
+         $ids=Input::get('id');
          $title='نظرات کاربران';
          $users = DB::table('masejs')->where('commoditie_id', '=', $id)->get();
 
-         return view('admins.product.mass',compact('id','title','users'));
+         return view('admins.product.mass',compact('id','ids','title','users'));
     }
     public function delete(Request $r ,$id)
     {

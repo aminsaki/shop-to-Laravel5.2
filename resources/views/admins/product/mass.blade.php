@@ -61,16 +61,17 @@
         <script type="text/javascript" src="{{URL::asset('assety/jquery.min.js')}}"></script>
         <script>
             $(document).ready(function () {
-               $("#submit").click(function (e) {
+               $("#btn_submits").click(function (e) {
 
                    e.preventDefault();
                 $.ajax({
                     url: "{{url('/snedusers')}}",
-                    type:"post",
-                    data:{'text':$("#text").val(),'_token':$('input[name=_token]').val()},
+                    method:"POST",
+                    data:{'text':$("#text").val(),'_token':$('input[name=_token]').val() ,'commoditie_id':$('input[name=commoditie_id]').val() },
                     success: function (data) {
                             $(".showmasse").text(data);
-                        console.log(data);
+                           //alert('ok');
+                        ///console.log(data);
                     },
                     error: function (data) {
                         console.log(data);
@@ -92,7 +93,7 @@
                     <div class="modal-body">
 
                             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-
+                               <input type="hidden" name="commoditie_id" value="{{$id}}">
                             <div class="form-group">
                                 <label for="message-text" class="control-label">پاسخ کاربر:</label>
                                 <textarea class="form-control" name="text" id="text"></textarea>
@@ -101,7 +102,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">بسته پنجری</button>
-                        <button type="submit" id="submit" class="btn btn-primary">ارسال پیام</button>
+                        <button type="submit" id="btn_submits" class="btn btn-primary">ارسال پیام</button>
                     </div>
                     </form>
                 </div>

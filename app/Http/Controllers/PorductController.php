@@ -121,10 +121,14 @@ class PorductController extends Controller
     }
     public function content(Request $request)
     {
-       $quey=DB::table('masejs')->insert([
+        $i= rand('1','1000');
+        $quey=DB::table('masejs')->insert([
          'username'=> Auth::user()->name,
+         'email'=>Auth::user()->email,
          'text'=>$request->input('text'),
          'user_id'=>Auth::user()->id,
+         'tell'=>'0912',
+         'commoditie_id'=>$request->input('commoditie_id').$i,
          'flag'=>1, ]);
         if($quey)
         {

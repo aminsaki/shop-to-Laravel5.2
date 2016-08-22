@@ -10,6 +10,7 @@
     </div>
     <div class="collapse navbar-collapse js-navbar-collapse navbg ">
         <ul class="nav navbar-nav navbar-right" >
+            @if(!empty($catp))
             <li class="dropdown mega-dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">فهرست مکان ها <i class="glyphicon glyphicon-new-window"></i></a>
                 <ul class="dropdown-menu mega-dropdown-menu">
@@ -27,6 +28,7 @@
                    </div>
                </ul>
             </li>
+           @endif
             <li><a href="#"data-toggle="modal" data-target=".bs-example-modal-lg">فهرست شهرها <i class="glyphicon glyphicon-new-window"></i></a></li>
             <li><a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">تماس با ما <i class="glyphicon glyphicon-log-out"></i>   </a></li>
             <li><a href="{{url('learn')}}">پداف چطور کار می کند <i class="glyphicon glyphicon-pushpin"></i></a></li>
