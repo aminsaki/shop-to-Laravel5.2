@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
+use Illuminate\Filesystem\Filesystem;
 
 class UploadController extends Controller
 {

@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('content')
-@include('admins.temp.nav_top')
+
    <div class="container-fluid">
       <div class="row">
         <div class="col-md-14">
@@ -91,4 +91,7 @@
        </div>
     </div>
 <script  src="{{ URL::asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace( 'editor1',{ uiColor:'#3FA3C5',language: 'fa',});
+    </script>
 @endsection

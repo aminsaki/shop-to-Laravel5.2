@@ -13,7 +13,7 @@
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                            <div class="col-md-6 col-md-offset-3">
-                                <input id="email" type="email" class="form-control" placeholder="لطفا ایمیل خود را وارد کنید" name="email" value="{{ old('email') }}">
+                                <input id="email" type="text" class="form-control" placeholder="لطفا ایمیل خود را وارد کنید" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">

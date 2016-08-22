@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddVotesToAboutsTable extends Migration
+class CreateCatproductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,11 @@ class AddVotesToAboutsTable extends Migration
      */
     public function up()
     {
-        Schema::table('abouts', function (Blueprint $table) {
-            //
+        Schema::create('catproducts', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('cat_id');
+            $table->string('title');
+            $table->timestamps();
         });
     }
 
@@ -24,8 +27,6 @@ class AddVotesToAboutsTable extends Migration
      */
     public function down()
     {
-        Schema::table('about', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('catproducts');
     }
 }

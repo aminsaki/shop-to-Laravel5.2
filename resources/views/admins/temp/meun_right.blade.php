@@ -1,70 +1,67 @@
 <div class="col-md-3  nav-right">
     <div class="panel-group" id="accordion">
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title text-right">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span
-                                class="glyphicon glyphicon-folder-close">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                             </span> ارسال مطلب  </a>
                 </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel-body">
+               <div class="panel-body">
+                   @if(\Illuminate\Support\Facades\Auth::user()->level==='admin')
                     <table class="table">
                         <tr>
-                            <td><span class="glyphicon glyphicon-pencil text-primary">
-                               </span><a href="{{url('/commit')}}">ارسال مطلب ها</a>
+                            <td><a href="{{url('/commit')}}">ارسال مطلب ها</a>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <span class="glyphicon glyphicon-flash text-success"></span><a
-                                        href="http://www.jquery2dotnet.com">News</a>
+                               <a href="{{url('/upload')}}">اسلایدر</a>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <span class="glyphicon glyphicon-file text-info"></span><a
-                                        href="{{url('/upload')}}">اسلایدر</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="glyphicon glyphicon-comment text-success"></span><a
-                                        href="{{url('contact')}}">پیام ها</a>
-
-                                <span class="badge">22</span>
-                            </td>
+                          <a href="{{url('contact')}}">پیام ها</a>
+                           </td>
                         </tr>
                     </table>
+                   @endif
                 </div>
             </div>
+
         </div>
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title text-right">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span
                                 class="glyphicon glyphicon-th">
-                            </span>Modules</a>
+                            </span>محصولات</a>
                 </h4>
             </div>
+
             <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
                     <table class="table">
+                        @if(\Illuminate\Support\Facades\Auth::user()->level==='write'or Auth::user()->level==='admin')
                         <tr>
                             <td>
-                                <a href="http://www.jquery2dotnet.com">Orders</a> <span
-                                        class="label label-success">$ 320</span>
+                                <a href="{{url('porduct')}}">ارسال محصولا</a> <span
+                                        class="label label-success"></span>
+                            </td>
+                        </tr>
+                     @endif
+                    @if(\Illuminate\Support\Facades\Auth::user()->level==='admin')
+                        <tr>
+                            <td>
+                                <a href="{{url('porductshow')}}">مشاهد محصولا</a>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <a href="http://www.jquery2dotnet.com">Invoices</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="http://www.jquery2dotnet.com">Shipments</a>
+                                <a href="{{url('/catproduct')}}">دسته ها</a>
                             </td>
                         </tr>
                         <tr>
@@ -72,45 +69,33 @@
                                 <a href="http://www.jquery2dotnet.com">Tex</a>
                             </td>
                         </tr>
+                     @endif
                     </table>
                 </div>
             </div>
         </div>
+
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title text-right">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span
                                 class="glyphicon glyphicon-user">
-                            </span>Account</a>
+                            </span>کاربران</a>
                 </h4>
             </div>
             <div id="collapseThree" class="panel-collapse collapse">
                 <div class="panel-body">
+                    @if(\Illuminate\Support\Facades\Auth::user()->level==='admin')
                     <table class="table">
                         <tr>
                             <td>
-                                <a href="http://www.jquery2dotnet.com">Change Password</a>
+                                <a href="{{url('/showuser')}}">مدیریت کاربران</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <a href="http://www.jquery2dotnet.com">Notifications</a> <span
-                                        class="label label-info">5</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="http://www.jquery2dotnet.com">Import/Export</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="glyphicon glyphicon-trash text-danger"></span><a
-                                        href="http://www.jquery2dotnet.com" class="text-danger">
-                                    Delete Account</a>
-                            </td>
-                        </tr>
+
+
                     </table>
+                    @endif
                 </div>
             </div>
         </div>
@@ -124,6 +109,8 @@
             </div>
             <div id="collapseFour" class="panel-collapse collapse">
                 <div class="panel-body">
+                    @if(\Illuminate\Support\Facades\Auth::user()->level==='admin')
+
                     <table class="tables">
                         <tr>
                             <td>
@@ -150,8 +137,10 @@
                             </td>
                         </tr>
                     </table>
+                        @endif
                 </div>
             </div>
         </div>
+
     </div>
 </div>

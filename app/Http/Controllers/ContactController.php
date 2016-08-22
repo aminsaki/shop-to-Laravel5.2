@@ -16,11 +16,12 @@ class ContactController extends Controller
     {
         //
     }
-
-    public function  index(){
-        $contacts=DB::table('contacts')->get();
-        $title='پیام ها کاربران';
-        return view('admins.contact.contact',compact('title','contacts','conu'));
+    public function  index()
+    {
+     $contacts=DB::table('contacts')->paginate(8);
+      //$flag=$contacts->flag;
+      $title='پیام ها کاربران';
+      return view('admins.contact.contact',compact('title','contacts','flag'));
     }
     public function show(Request $request, $id)
     {

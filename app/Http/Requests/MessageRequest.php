@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class ContactRequest extends Request
+class MessageRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class ContactRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,11 +24,10 @@ class ContactRequest extends Request
     public function rules()
     {
         return [
-            'username'=> 'required',
-            'tell'=> 'required',
-            'email'=> 'required',
-            'commit'=> 'required',
-            'title'=> 'required',
+            'email' => 'required|email',
+            'text'=>'required',
+            'tell'=>'required'
+
         ];
     }
 }

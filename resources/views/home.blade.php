@@ -1,211 +1,375 @@
 @extends('layouts.layout')
 @section('content')
-<div class="container-fluid">
-   @include('temp.header')
-    @include('temp.serach')
-<div class="container ">
-    <div class="row">
-        <div class="col-md-12">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                </ol>
-                 @foreach($upload as $row)
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner " role="listbox">
-                    <div class="item active" >
-                        <img src="{{$row->img}}" class="col-md-12 imgslider" alt="...">
-                        <div class="carousel-caption">
+    <div class="container-fluid">
+        @include('temp.header')
+        @include('temp.serach')
+        <div class="container ">
+            @include('temp.slide')
+            <div class="row">
+                <!---/.start......-->
+                 @if(!empty($product1))
+             <div class="col-md-12 btn content-prodcut"><a href="#" class="pull-right">{{$title1}}</a></div>
 
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="{{$row->imgo}}" class="col-lg-12 imgslider" alt="...">
-                        <div class="carousel-caption">
+                <div class="col-md-12  panel panel-default tops">
+                    @foreach($product1 as $row)
+                        <div class="col-md-3" style="margin-top: 10px;">
+                            <div class="col-md-14 borderimg">
+                                <div class="hovereffect">
 
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="{{$row->imgt}}" class="col-lg-12 imgslider" alt="...">
-                        <div class="carousel-caption">
+                                    <img src="{{$row->img}}" class="img-responsive col-md-14 timg" id="bnt"style="height: 210px;">
 
-                        </div>
-                    </div>
-                </div>
-          @endforeach
-                <!-- Controls -->
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    </div><!--/.endslide-->
-    <br>
-    <div class="row">
-        <div class="col-md-12 titleproduct panel panel-default bgtitle">
-            <h4> اخرین محصولان</h4>
-        </div>
-    </div>
-    <div class="row ">
-        <div class="col-lg-12 ">
+                                    <div class="overlay">
+                                        <div class="form-group">پرداخت شما  </div>
+                                        <div class="form-group text-success ">{{$row->originalprice}}</div>
+                                        <table class="table table-responsive">
+                                            <tr>
+                                                <td>{{$row->pricesbefore}}</td>
+                                                <td>%{{$row->discountprice}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td> ارزش واقعی</td>
+                                                <td> تخفیف</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <a href="readmore/{{$row->id}}">
+                                                        <input type="submit" class="btn btn-primary col-md-pull-8"
+                                                               value="مشاهد pedoff">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <ul class="bg">
+                                    <li> <i style="color:#F5AB35"class="glyphicon glyphicon-triangle-left"></i> {{$row->titles}}</li>
+                                </ul>
+                                <br>
+                                <ul>
+                                    <li><span class="glyphicon glyphicon-map-marker text-capitalize text-success"><strike>قیمت قبل  {{$row->pricesbefore}}</strike>  </span></li>
+                                </ul>
 
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="hovereffect">
-                    <img class="img-responsive img-circle"  src="https://miketricking.github.io/dist/images/p26.jpg" alt="">
-                    <div class="overlay ">
-                        <div class="tables">
-                            <div class="col-md-12 text-center" >
-                                <h5> پرداخت شما</h5>
-                                <h5> 180000 تومان</h5>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-md-6"> ارزش واقعیت 20000000</div>
-                                <div class="col-md-6"> ارزش واقعیت 20000000</div>
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <a href="#"> پرداخت </a>
+                                <table class="table table-bordered tablproduct">
+                                    <tr>
+                                        <td class="col-md-2 " style="background-color: #F5AB35;font-size: 16px; ">
+                                            <p >%{{$row->discountprice}}</p>
+                                        </td>
+                                        <td class="price t"style="background-color: #1EBAA9;" >
+                                            <p class="text-center" style="font-size:16px;">  {{$row->originalprice}}ریال</p>
+                                        </td>
+                                    </tr>
+                                </table>
+
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
+             @endif
+                @if(!empty($product2))
+                <div class="col-md-12 btn content-prodcut"><a href="#" class="pull-right">{{$title2}}</a></div>
+                <div class="col-md-12  panel panel-default ">
+                    @foreach($product2 as $row)
+                        <div class="col-md-3">dsdsd
+                            <div class="col-md-14 borderimg">
+                                <div class="hovereffect">
+
+                                    <img src="{{$row->img}}" class="img-responsive col-md-14 timg" id="bnt"style="height: 210px;">
+
+                                    <div class="overlay">
+                                        <div class="form-group">پرداخت شما  </div>
+                                        <div class="form-group text-success ">{{$row->originalprice}}</div>
+                                        <table class="table table-responsive">
+                                            <tr>
+                                                <td>{{$row->pricesbefore}}</td>
+                                                <td>%{{$row->discountprice}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td> ارزش واقعی</td>
+                                                <td> تخفیف</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <a href="readmore/{{$row->id}}">
+                                                        <input type="submit" class="btn btn-primary col-md-pull-8"
+                                                               value="مشاهد pedoff">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <ul class="bg">
+                                    <li> <i style="color:#F5AB35"class="glyphicon glyphicon-triangle-left"></i> {{$row->titles}}</li>
+                                </ul>
+                                <br>
+                                <ul>
+                                    <li><span class="glyphicon glyphicon-map-marker text-capitalize text-success"><strike>قیمت قبل  {{$row->pricesbefore}}</strike>  </span></li>
+                                </ul>
+
+                                <table class="table table-bordered tablproduct">
+                                    <tr>
+                                        <td class="col-md-2 " style="background-color: #F5AB35;font-size: 16px; ">
+                                            <p >%{{$row->discountprice}}</p>
+                                        </td>
+                                        <td class="price t"style="background-color: #1EBAA9;" >
+                                            <p class="text-center" style="font-size:16px;">  {{$row->originalprice}}ریال</p>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+              @endif
+                    @if(!empty($product3))
+                <div class="col-md-12 btn content-prodcut"><a href="#" class="pull-right">{{$title3}}</a></div>
+
+                <div class="col-md-12  panel panel-default tops">
+                    @foreach($product3 as $row)
+                        <div class="col-md-3" style="margin-top: 10px;">
+                            <div class="col-md-14 borderimg">
+                                <div class="hovereffect">
+
+                                    <img src="{{$row->img}}" class="img-responsive col-md-14 timg" id="bnt"style="height: 210px;">
+
+                                    <div class="overlay">
+                                        <div class="form-group">پرداخت شما  </div>
+                                        <div class="form-group text-success ">{{$row->originalprice}}</div>
+                                        <table class="table table-responsive">
+                                            <tr>
+                                                <td>{{$row->pricesbefore}}</td>
+                                                <td>%{{$row->discountprice}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td> ارزش واقعی</td>
+                                                <td> تخفیف</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <a href="readmore/{{$row->id}}">
+                                                        <input type="submit" class="btn btn-primary col-md-pull-8"
+                                                               value="مشاهد pedoff">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <ul class="bg">
+                                    <li> <i style="color:#F5AB35"class="glyphicon glyphicon-triangle-left"></i> {{$row->titles}}</li>
+                                </ul>
+                                <br>
+                                <ul>
+                                    <li><span class="glyphicon glyphicon-map-marker text-capitalize text-success"><strike>قیمت قبل  {{$row->pricesbefore}}</strike>  </span></li>
+                                </ul>
+
+                                <table class="table table-bordered tablproduct">
+                                    <tr>
+                                        <td class="col-md-2 " style="background-color: #F5AB35;font-size: 16px; ">
+                                            <p >%{{$row->discountprice}}</p>
+                                        </td>
+                                        <td class="price t"style="background-color: #1EBAA9;" >
+                                            <p class="text-center" style="font-size:16px;">  {{$row->originalprice}}ریال</p>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                @endif
+                @if(!empty($product4))
+              <div class="col-md-12 btn content-prodcut"><a href="#" class="pull-right">{{$title4}}</a></div>
+
+                <div class="col-md-12  panel panel-default tops">
+                    @foreach($product4 as $row)
+                        <div class="col-md-3" style="margin-top: 10px;">
+                            <div class="col-md-14 borderimg">
+                                <div class="hovereffect">
+
+                                    <img src="{{$row->img}}" class="img-responsive col-md-14 timg" id="bnt"style="height: 210px;">
+
+                                    <div class="overlay">
+                                        <div class="form-group">پرداخت شما  </div>
+                                        <div class="form-group text-success ">{{$row->originalprice}}</div>
+                                        <table class="table table-responsive">
+                                            <tr>
+                                                <td>{{$row->pricesbefore}}</td>
+                                                <td>%{{$row->discountprice}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td> ارزش واقعی</td>
+                                                <td> تخفیف</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <a href="readmore/{{$row->id}}">
+                                                        <input type="submit" class="btn btn-primary col-md-pull-8"
+                                                               value="مشاهد pedoff">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <ul class="bg">
+                                    <li> <i style="color:#F5AB35"class="glyphicon glyphicon-triangle-left"></i> {{$row->titles}}</li>
+                                </ul>
+                                <br>
+                                <ul>
+                                    <li><span class="glyphicon glyphicon-map-marker text-capitalize text-success"><strike>قیمت قبل  {{$row->pricesbefore}}</strike>  </span></li>
+                                </ul>
+
+                                <table class="table table-bordered tablproduct">
+                                    <tr>
+                                        <td class="col-md-2 " style="background-color: #F5AB35;font-size: 16px; ">
+                                            <p >%{{$row->discountprice}}</p>
+                                        </td>
+                                        <td class="price t"style="background-color: #1EBAA9;" >
+                                            <p class="text-center" style="font-size:16px;">  {{$row->originalprice}}ریال</p>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                @endif
+                @if(!empty($product5))
+                <div class="col-md-12 btn content-prodcut"><a href="#" class="pull-right">{{$title5}}</a></div>
+
+                <div class="col-md-12  panel panel-default tops">
+                    @foreach($product5 as $row)
+                        <div class="col-md-3" style="margin-top: 10px;">
+                            <div class="col-md-14 borderimg">
+                                <div class="hovereffect">
+
+                                    <img src="{{$row->img}}" class="img-responsive col-md-14 timg" id="bnt"style="height: 210px;">
+
+                                    <div class="overlay">
+                                        <div class="form-group">پرداخت شما  </div>
+                                        <div class="form-group text-success ">{{$row->originalprice}}</div>
+                                        <table class="table table-responsive">
+                                            <tr>
+                                                <td>{{$row->pricesbefore}}</td>
+                                                <td>%{{$row->discountprice}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td> ارزش واقعی</td>
+                                                <td> تخفیف</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <a href="readmore/{{$row->id}}">
+                                                        <input type="submit" class="btn btn-primary col-md-pull-8"
+                                                               value="مشاهد pedoff">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <ul class="bg">
+                                    <li> <i style="color:#F5AB35"class="glyphicon glyphicon-triangle-left"></i> {{$row->titles}}</li>
+                                </ul>
+                                <br>
+                                <ul>
+                                    <li><span class="glyphicon glyphicon-map-marker text-capitalize text-success"><strike>قیمت قبل  {{$row->pricesbefore}}</strike>  </span></li>
+                                </ul>
+
+                                <table class="table table-bordered tablproduct">
+                                    <tr>
+                                        <td class="col-md-2 " style="background-color: #F5AB35;font-size: 16px; ">
+                                            <p >%{{$row->discountprice}}</p>
+                                        </td>
+                                        <td class="price t"style="background-color: #1EBAA9;" >
+                                            <p class="text-center" style="font-size:16px;">  {{$row->originalprice}}ریال</p>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                @endif
+                @if(!empty($product6))
+                <div class="col-md-12 btn content-prodcut"><a href="#" class="pull-right">{{$title6}}</a></div>
+
+                <div class="col-md-12  panel panel-default tops">
+                    @foreach($product6 as $row)
+                        <div class="col-md-3" style="margin-top: 10px;">
+                            <div class="col-md-14 borderimg">
+                                <div class="hovereffect">
+
+                                    <img src="{{$row->img}}" class="img-responsive col-md-14 timg" id="bnt"style="height: 210px;">
+
+                                    <div class="overlay">
+                                        <div class="form-group">پرداخت شما  </div>
+                                        <div class="form-group text-success ">{{$row->originalprice}}</div>
+                                        <table class="table table-responsive">
+                                            <tr>
+                                                <td>{{$row->pricesbefore}}</td>
+                                                <td>%{{$row->discountprice}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td> ارزش واقعی</td>
+                                                <td> تخفیف</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <a href="readmore/{{$row->id}}">
+                                                        <input type="submit" class="btn btn-primary col-md-pull-8"
+                                                               value="مشاهد pedoff">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <ul class="bg">
+                                    <li> <i style="color:#F5AB35"class="glyphicon glyphicon-triangle-left"></i> {{$row->titles}}</li>
+                                </ul>
+                                <br>
+                                <ul>
+                                    <li><span class="glyphicon glyphicon-map-marker text-capitalize text-success"><strike>قیمت قبل  {{$row->pricesbefore}}</strike>  </span></li>
+                                </ul>
+
+                                <table class="table table-bordered tablproduct">
+                                    <tr>
+                                        <td class="col-md-2 " style="background-color: #F5AB35;font-size: 16px; ">
+                                            <p >%{{$row->discountprice}}</p>
+                                        </td>
+                                        <td class="price t"style="background-color: #1EBAA9;" >
+                                            <p class="text-center" style="font-size:16px;">  {{$row->originalprice}}ریال</p>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+              @endif
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="hovereffect">
-                    <img class="img-responsive img-circle"  src="https://miketricking.github.io/dist/images/p26.jpg" alt="">
-                    <div class="overlay">
-                        <h2>Hover effect 4v2</h2>
-                        <a class="info" href="#">link here</a>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel panel-body mypanel">
-                    sffddsdsfsd
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="hovereffect">
-                    <img class="img-responsive img-circle"  src="https://miketricking.github.io/dist/images/p26.jpg" alt="">
 
-                    <div class="overlay">
-                        <h2>Hover effect 4v2</h2>
-                        <a class="info" href="#">link here</a>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel panel-body mypanel">
-                    sffddsdsfsd
-                </div>
-            </div>
-        </div>
-    </div><!--/.row-->
-    <br>
-    <div class="row">
-        <div class="col-md-12 titleproduct panel panel-default bgtitle">
-            <h4> اخرین محصولان</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 ">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="hovereffect">
-                    <img class="img-responsive img-circle"  src="https://miketricking.github.io/dist/images/p26.jpg" alt="">
-
-                    <div class="overlay">
-                        <h2>Hover effect 4v2</h2>
-                        <a class="info" href="#">link here</a>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel panel-body mypanel">
-                    sffddsdsfsd
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="hovereffect">
-                    <img class="img-responsive img-circle"  src="https://miketricking.github.io/dist/images/p26.jpg" alt="">
-                    <div class="overlay">
-                        <h2>Hover effect 4v2</h2>
-                        <a class="info" href="#">link here</a>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel panel-body mypanel">
-                    sffddsdsfsd
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="hovereffect">
-                    <img class="img-responsive img-circle"  src="https://miketricking.github.io/dist/images/p26.jpg" alt="">
-                    <div class="overlay">
-                        <h2>Hover effect 4v2</h2>
-                        <a class="info" href="#">link here</a>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel panel-body mypanel">
-                    sffddsdsfsd
-                </div>
-            </div>
-
-        </div>
-    </div><!--/.row4-->
-    <br>
-    <div class="row">
-        <div class="col-md-12 titleproduct panel panel-default bgtitle">
-            <h4> اخرین محصولان</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 ">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="hovereffect">
-                    <img class="img-responsive img-circle"  src="https://miketricking.github.io/dist/images/p26.jpg" alt="">
-
-                    <div class="overlay">
-                        <h2>Hover effect 4v2</h2>
-                        <a class="info" href="#">link here</a>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel panel-body mypanel">
-                    sffddsdsfsd
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="hovereffect">
-                    <img class="img-responsive img-circle"  src="https://miketricking.github.io/dist/images/p26.jpg" alt="">
-
-                    <div class="overlay">
-                        <h2>Hover effect 4v2</h2>
-                        <a class="info" href="#">link here</a>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel panel-body mypanel">
-                    sffddsdsfsd
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 "  >
-                <div class="hovereffect">
-                    <img class="img-responsive img-circle"  src="https://miketricking.github.io/dist/images/p26.jpg" alt="">
-
-                    <div class="overlay">
-                        <h2>Hover effect 4v2</h2>
-                        <a class="info" href="#">link here</a>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 panel panel-body mypanel">
-                    sffddsdsfsd
-                </div>
-            </div>
-        </div>
-    </div><!--/.row5-->
-
-</div><!--/.container-->
-@include('temp.footer')
-</div><!--/.container-fiuer-->
-
-
+        </div><!--/.container-->
+        @include('temp.footer')
+    </div><!--/.contlainer-fiuer-->
 @stop

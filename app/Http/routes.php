@@ -1,19 +1,7 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 //header page index 
 Route::get('/', 'HomeController@index');
-
 //header  page  website
 Route::group(['middleware' => ['web']], function () {
 
@@ -24,11 +12,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('admin','AdminController@index');
     Route::get('user','UserController@index');
     Route::post('contact','HomeController@insertcontent');
+    Route::get('readmore/{id}','HomeController@readmore');
+    Route::post('message','MessageController@insert');
+    Route::get('serachs','HomeController@serach');
 
 
 });
 ///header page  validtion logins
-Route::group(['midddleware'=>['Auth']],function() {
+Route::group(['midddleware'=>['auth']],function() {
     $this->get('login', 'AuthController@showLoginForm');
     $this->post('login', 'AuthController@login');
     $this->get('logout', 'AuthController@logout');
@@ -39,12 +30,37 @@ Route::group(['midddleware'=>['Auth']],function() {
     $this->get('password/reset/{token?}', 'PasswordController@showResetForm');
     $this->post('password/email', 'PasswordController@sendResetLinkEmail');
     $this->post('password/reset', 'PasswordController@reset');
-     Route::get('user','UserController@index');
     Route::auth();
+   ///users
+    Route::get('user','UserController@index');
+    Route::get('datashow','UserController@show');
+    Route::get('formpassword','UserController@passwords');
+    Route::post('savepassword','UserController@save');
+
+});
+///header page users  or admins label  admin or users
+Route::get('clogin',function(){
+
+    if(Auth::user())
+    {
+        if (Auth::user()->level === 'admin' ||Auth::user()->level ==='write') {
+
+            return view('admins.index');
+        } elseif (Auth::user()->level === 'user') {
+
+            return  redirect()->back()->with(['title'=>'اطلاعات کاربر']);
+        }
+        else {
+            return view('auth.login');
+        }
+    }
+    else {
+        return view('auth.login');
+
+    }
 });
 
-
-///header  page admin if pasword and username  true 
+///header  page admin if pasword and username  true
 Route::group(['middleware' => 'admin'] , function(){
    Route::get('admin','AdminController@index');
     ///ShowAboutcatpost
@@ -61,36 +77,32 @@ Route::group(['middleware' => 'admin'] , function(){
     Route::get('duploads/{id}','UploadController@delete');
     Route::post('sendup','UploadController@insert');
     Route::get('showimg','UploadController@showimg');
+     ///adminusers
+    Route::get('showuser','AdminuserController@index');
+    Route::get('deleteuser/{id}','AdminuserController@delete');
+    Route::post('saveuser','AdminuserController@saves');
+    Route::get('userpass/{id}','AdminuserController@password');
+    Route::post('chanepassword','AdminuserController@chanepassword');
+  ///Porduct
+    Route::get('porduct','PorductController@index');
+    Route::post('porinsert','PorductController@insert');
+    Route::get('porductshow','PorductController@show');
+    Route::get('delproduct/{id}','PorductController@delete');
+    Route::get('editproduct/{id}','PorductController@showporduct');
+    Route::post('editproduct','PorductController@edit');
+    Route::post('/snedusers','PorductController@content');
+    ///catproduct
+    Route::get('catproduct','CatproductController@index');
+    Route::post('catsave','CatproductController@save');
+    Route::get('catproduct/{id}','CatproductController@delete');
+    Route::post('editcatproduct','CatproductController@edit');
 
+    ///massej
+    Route::get('mass/{id}','MessageController@index');
+    Route::get('mass/delmass/{id}','MessageController@delete');
+    Route::post('massjes','MessageController@update');
 
 });
-
-/// header  page uses  if  password youe true
-Route::group(['middleware' => 'auth'] , function(){
- 
-  Route::get('user','UserController@index');
-});
-
-///header page users  or admins label  admin or users
- Route::get('clogin',function(){
-
-  if(Auth::user())
-  {
-      if (Auth::user()->level === 'admin') {
-          $title = 'صفحه مدیریت';
-          return view('admins.index', compact('title'));
-      } elseif (Auth::user()->level === 'user') {
-          return view('users.index');
-      }
-      else {
-         return view('auth.login');
-      }
-  }
-  else {
-      return view('auth.login');
-
-  }
-  });
 
 
 

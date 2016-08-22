@@ -29,6 +29,7 @@ return [
     ],
     'boolean'              => ':attribute باید مقداری منطقی باشد',
     'confirmed'            => 'تکرار :attribute مطابق نمیباشد',
+     'password confirm'     =>'رمز ورود باهم مطابقت ندارد',
     'date'                 => 'تاریخ :attribute معتبر نیست',
     'date_format'          => ':attribute باید با فرمت :format باشد.',
     'different'            => ':attribute و  :other باید متفاوت باشند.',
@@ -112,7 +113,8 @@ return [
         'phone'=>'شماره تماس',
         'title'=>'عنوان',
         'content'=>'محتوا',
-         'size'=>'انداز'
+         'size'=>'انداز',
+          'password confirm'=>'رمز عبور ها باهم برابر نیستن',
 
     ],
 
