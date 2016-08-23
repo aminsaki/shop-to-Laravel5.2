@@ -15,11 +15,15 @@ class adminmiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if(Auth::check() && Auth::user()->level==='admin'||Auth::user()->level==='write'){
-          return $next($request);
-        } else {
+       if(!empty(Auth::user())):
+           if(Auth::check() && Auth::user()->level==='admin'||Auth::user()->level==='write'):
+              return $next($request);
+           else:
+              return redirect('login');
+           endif;
+       else:
           return redirect('login');
-        }
+       endif;
     }
     
 }

@@ -32,7 +32,7 @@ class AuthController extends Controller
 
    
 
-    protected $redirectTo = 'clogin';
+    protected $redirectTo = 'cpanel';
 
     /**
      * Create a new authentication controller instance.

@@ -2,7 +2,7 @@
 
     <div class="col-md-6  text-left">
         <p class="text-left btn btn-danger ">
-            <a href="{{url('\')}}" style="color:white; font-size: 14px;">خروج</a>
+            <a href="{{url('logout')}}" style="color:white; font-size: 14px;">خروج</a>
             <i class="glyphicon glyphicon-off"></i>
         </p>
     </div>

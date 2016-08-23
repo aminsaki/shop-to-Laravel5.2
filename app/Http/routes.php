@@ -20,28 +20,9 @@ Route::group(['middleware' => ['web']], function () {
 });
 
 
-Route::get('clogin',function(){
 
-    if(Auth::user())
-    {
-        if (Auth::user()->level === 'admin' ||Auth::user()->level ==='write') {
 
-            return view('admins.index');
-        } elseif (Auth::user()->level === 'user') {
-
-            return  redirect()->back()->with(['title'=>'اطلاعات کاربر']);
-        }
-        else {
-            return view('auth.login');
-        }
-    }
-    else {
-        return view('auth.login');
-
-    }
-});
-
-Route::group(['midddleware'=>['auth']],function() {
+Route::group(['midddleware'=>'auth'],function() {
     $this->get('login', 'AuthController@showLoginForm');
     $this->post('login', 'AuthController@login');
     $this->get('logout', 'AuthController@logout');
@@ -54,12 +35,14 @@ Route::group(['midddleware'=>['auth']],function() {
     $this->post('password/reset', 'PasswordController@reset');
     Route::auth();
     ///users
+
     Route::get('user','User\UserController@index');
     Route::get('datashow','User\UserController@show');
     Route::get('formpassword','User\UserController@passwords');
     Route::post('savepassword','User\UserController@save');
-
 });
+
+
 
 Route::group(['middleware' => 'admin'] , function(){
    Route::get('admin','AdminController@index');
@@ -102,6 +85,27 @@ Route::group(['middleware' => 'admin'] , function(){
     Route::get('mass/delmass/{id}','MessageController@delete');
     Route::post('massjes','MessageController@update');
 
+});
+Route::get('cpanel',function(){
+
+    if(Auth::user())
+    {
+        if (Auth::user()->level === 'admin' ||Auth::user()->level ==='write') {
+
+            return view('admins.index');
+
+        } elseif (Auth::user()->level === 'user') {
+
+            return redirect()->back()->with(['title'=>'اطلاعات کاربر']);
+        }
+        else {
+            return view('auth.login');
+        }
+    }
+    else {
+        return view('auth.login');
+
+    }
 });
 
 
